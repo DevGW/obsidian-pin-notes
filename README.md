@@ -38,7 +38,7 @@ This Obsidian plugin allows users to easily pin and unpin their notes, providing
 
 This plugin does not have specific customization options as of now. However, future versions might include them based on user feedback.
 
-## Troubleshooting
+## Troubleshooting 
 
 - If you encounter issues or unexpected behavior, start by checking the developer console for any errors or logs that might provide clues.
 - Ensure that there are no conflicts with other plugins.
