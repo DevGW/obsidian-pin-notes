@@ -1,0 +1,8 @@
+{
+  "id": "pin-notes",
+  "name": "Pin Notes",
+  "description": "Pin notes to the top of the list",
+  "version": "0.1.0",
+  "author": "DevGW",
+  "main": "main.js"
+}

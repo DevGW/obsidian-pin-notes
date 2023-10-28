@@ -1,0 +1,44 @@
+/* Style the sidebar for pinned notes */
+.pinned-notes-list {
+    background-color: var(--background-secondary);  /* Use a slightly different background color for distinction */
+    padding: 10px;  /* Add some padding for comfort */
+}
+
+.pinned-note-item {
+    padding: 5px 0;  /* Space out the notes a bit */
+    border-radius: 3px;  /* Optional rounded corners */
+    transition: background 0.2s;  /* Smooth transition for hover effect */
+}
+
+.pinned-note-item:hover {
+    cursor: pointer;
+    background-color: var(--text-accent-hover);  /* Change background on hover for a visual indicator */
+    color: var(--background-primary);  /* Change text color on hover for contrast */
+}
+
+/* Existing provided styles */
+pre[data-role="yaml"] + h1,
+pre[data-role="yaml"] + h2,
+pre[data-role="yaml"] + h3 {
+    color: red;
+    font-weight: bold;
+}
+.pinned-notes-label {
+    color: var(--text-primary);  /* Set a default color to ensure visibility */
+    white-space: nowrap;  /* Prevent the label from wrapping to the next line */
+    margin-left: 5px;  /* Add some spacing between the icon and the label */
+}
+.pinned-notes-label {
+    display: inline-block !important;  /* Force the label to display */
+}
+
+/* nice css styling for the pinned header */
+.pinned-notes-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--background-secondary);
+    border-bottom: 1px solid var(--background-modifier-border-focus);
+    font-weight: bold;
+    margin-bottom: 5px;
+}
