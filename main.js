@@ -171,14 +171,33 @@ class PinnedNotesSidebarView extends ItemView {
             if (file instanceof TFile) {
                 let noteItem = document.createElement("div");
                 noteItem.className = 'pinned-note-item';
-                noteItem.innerText = file.basename;
+
+                // Create unpin icon/button
+                let unpinIcon = document.createElement("span");
+                unpinIcon.className = 'unpin-icon';
+                unpinIcon.innerHTML = '&#10006;'; // You can replace this with another icon or character
+                unpinIcon.style.marginLeft = "0px"; // Add some spacing between filename and icon
+                unpinIcon.style.cursor = "pointer"; // Make it look clickable
+                unpinIcon.title = "Unpin this note"; // Tooltip on hover
+                noteItem.appendChild(unpinIcon);
+
+                // Create a span for the filename
+                let fileNameSpan = document.createElement("span");
+                fileNameSpan.innerText = file.basename;
+                fileNameSpan.style.marginLeft = "5px"; // Add some spacing between filename and icon
+                noteItem.appendChild(fileNameSpan);
+
+                unpinIcon.addEventListener('click', (e) => {
+                    e.stopPropagation(); // Prevents the note opening action when unpinning
+                    this.plugin.pinNote(file);
+                });
 
                 noteItem.addEventListener('click', () => {
                     const mainPane = this.app.workspace.getLeavesOfType('markdown')[0];
                     if (mainPane) {
                         mainPane.openFile(file);
                     } else {
-                        this.app.workspace.activeLeaf.openFile(file);  // fallback to activeLeaf in case there's no main pane for some reason
+                        this.app.workspace.activeLeaf.openFile(file);  // fallback to activeLeaf
                     }
                 });
 
@@ -191,6 +210,7 @@ class PinnedNotesSidebarView extends ItemView {
                 pinnedNotesContainer.appendChild(noteItem);
             }
         }
+
 
         // Ensure the pinnedNotesContainer is the first child of contentEl
         this.contentEl.prepend(pinnedNotesContainer);
@@ -209,7 +229,7 @@ class PinnedNotesSidebarView extends ItemView {
         }));
 
         menu.addItem((item) => item.setTitle("Unpin").onClick(() => {
-           this.plugin.pinNote(file);
+            this.plugin.pinNote(file);
         }));
 
         menu.showAtPosition({x: event.pageX, y: event.pageY});
